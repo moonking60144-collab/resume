@@ -15,7 +15,7 @@
 <dl class="experience">
   <dt class="when"><time datetime="2025-09">2025.09</time> – 迄今</dt>
   <dd>
-    <strong>資訊軟體工程師</strong>
+    <strong>軟體工程師</strong>
     <span>宏得螺絲工業股份有限公司</span>
     <p>開發 Ragic 表單與跨表流程，將料號版本管理、核價等作業自動化。</p>
   </dd>
@@ -32,7 +32,7 @@
 <article class="work-report" aria-labelledby="report-title">
   <h3 id="report-title">生產報工 Web 系統 <span class="when">2026.02 – 迄今</span></h3>
   <p class="stack">React · TypeScript · Express · SQLite · SSE</p>
-  <p>我把常用的工令查詢移到 SQLite，讓現場查列表時，不必每次都等 Ragic 回應。</p>
+  <p>現場查詢工令列表時，直接讀取已同步到 SQLite 的資料，省去等待 Ragic 回應的時間。</p>
   <section aria-labelledby="sync-title">
     <h4 id="sync-title">背景同步時，現場仍能查工令</h4>
     <table class="sync-timeline" aria-labelledby="sync-title">
@@ -65,9 +65,9 @@
   </section>
 </article>
 
-**會議錄音**　因應會議紀錄需求，我讓長錄音優先在停頓處切段辨識。若切點附近持續有人說話，就在音量最低處切開，並在逐字稿標記該處供回聽。
+**會議錄音**　長錄音優先在語音停頓處切段，再逐段辨識。若切點附近持續有人說話，系統會在音量最低處切開，並在逐字稿標記該處，方便回聽。
 
-**企業知識問答（RAG）**　我在檢索時提高連續中文詞組的權重，再用字詞相近、作業規則不同的文件，逐題檢查模型有沒有拿到回答所需的原文。
+**企業知識問答（RAG）**　檢索時提高連續中文詞組的權重。測試選用字詞相近但作業規則不同的文件，逐題核對檢索結果是否包含回答所需的原文。
 
 ### 物料需求規劃（MRP） <span class="when">2026.05 – 迄今</span>
 
@@ -75,13 +75,13 @@
 
 原本在 Ragic 執行的需求計算改寫成獨立服務，用同一批訂單、庫存與工令資料，推算每月的成品需求與每週的零件需求。
 
-**歸屬不明的料**　其中一個難題是批號已轉到下一張工令，前一張卻還沒結清。遇到這種情況，我讓系統保留「待查」狀態，交由人員核對，避免把歸屬不明的數量當成已保留的料。
+**歸屬不明的料**　批號已轉到下一張工令、前一張工令仍未結清時，系統將該批號標為「待查」，交由人員核對。確認歸屬前，該批數量不計入已保留量。
 
 ## 公開作品
 
 ### [Command Atlas](https://moonking60144-collab.github.io/command-cheatsheet/)
 
-我把平常會查的指令整理成速查網站。像是想看 Git 分支從哪裡分開、又在哪裡合併，可以直接找到對應指令與用途。[查看原始碼](https://github.com/moonking60144-collab/command-cheatsheet)
+常用指令速查網站，可依操作需求查找指令與用途，例如查看 Git 分支的分岔與合併紀錄。[查看原始碼](https://github.com/moonking60144-collab/command-cheatsheet)
 
 ## 學歷
 
