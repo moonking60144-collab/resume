@@ -1,0 +1,148 @@
+:root {
+  color-scheme: light;
+  --ink: #221f1b;
+  --body: #3b3732;
+  --muted: #6a645b;
+  --line: #e4ded3;
+  --edge: #e2ddd3;
+  --link-line: #b3a690;
+  --focus: #4258a1;
+  --paper: #fffdf9;
+  --desk: #f2efea;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: var(--body);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+body { margin: 0; }
+main {
+  max-width: 50rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 5vw, 2rem) 3rem;
+}
+h1, h2, h3, p { margin: 0; }
+
+/* 頁首 */
+h1 {
+  color: var(--ink);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+h1 + p {
+  margin-top: .5rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+h1 + p + p { margin-top: .9rem; max-width: 36rem; }
+.links {
+  margin-top: .9rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  font-size: .9rem;
+}
+
+/* 內文 */
+p {
+  font-size: .96875rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+p + p { margin-top: .55rem; }
+strong { color: var(--ink); font-weight: 650; }
+
+h2 {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: .8rem;
+  line-height: 1.6;
+  letter-spacing: .14em;
+  font-weight: 650;
+}
+h3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .15rem 1rem;
+  color: var(--ink);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  font-weight: 650;
+}
+h2 + h3, h2 + p { margin-top: .75rem; }
+p + h3 { margin-top: 2rem; }
+.when, .stack {
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.stack { margin-top: .15rem; margin-bottom: .6rem; line-height: 1.6; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--link-line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+}
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+footer {
+  max-width: 50rem;
+  margin-inline: auto;
+  padding: 0 clamp(1rem, 5vw, 2rem) 3rem;
+  color: var(--muted);
+  font-size: .8rem;
+}
+footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+
+/* 寬螢幕與列印：左欄放段落標籤，右欄放內容 */
+@media print, (min-width: 46rem) {
+  main {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    column-gap: 2.5rem;
+    align-items: start;
+  }
+  main > * { grid-column: 1 / -1; }
+  h2 ~ * { grid-column: 2; }
+  main > h2 { grid-column: 1; }
+  h2, h2 + * { align-self: baseline; }
+  h2 + h3, h2 + p { margin-top: 2.5rem; }
+}
+
+/* 寬螢幕：桌面帶紙紋，內容放在一張乾淨的紙上；手機維持滿版紙色、不加紙紋 */
+@media screen and (min-width: 46rem) {
+  :root {
+    background-color: var(--desk);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='4' intercept='-1.5'/%3E%3CfeFuncG type='linear' slope='4' intercept='-1.5'/%3E%3CfeFuncB type='linear' slope='4' intercept='-1.5'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29' opacity='.08'/%3E%3C/svg%3E");
+  }
+  body {
+    width: min(55rem, 100% - 3rem);
+    margin: clamp(1.5rem, 4vw, 3.5rem) auto;
+    background: var(--paper);
+    border: 1px solid var(--edge);
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgb(60 45 20 / .04), 0 24px 48px -32px rgb(60 45 20 / .22);
+  }
+}
+
+@media print {
+  @page { size: A4; margin: 16mm 18mm; }
+  :root { background: #fff; }
+  main { max-width: none; padding: 0; }
+  p { font-size: 10.5pt; line-height: 1.65; }
+  h2, h2 + h3, h2 + p { margin-top: 1.4rem; }
+  .links { padding-bottom: 1rem; }
+  h2, h3, .stack { break-after: avoid; }
+  p { orphans: 2; widows: 2; }
+  footer { padding: 0; margin-top: 1.5rem; }
+}
