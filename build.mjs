@@ -22,7 +22,7 @@ const page = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wyden｜個人履歷</title>
+  <title>羅智加(Wyden)｜個人履歷</title>
   <style>${styles}</style>
 </head>
 <body>
