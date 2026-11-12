@@ -45,9 +45,9 @@
 ## 工作專案
 
 <article class="work-report" aria-labelledby="report-title">
-  <h3 id="report-title">生產報工 Web 系統 <span class="when">2026.02 – 迄今</span></h3>
-  <p class="stack">React · TypeScript · Express · SQLite · SSE</p>
-  <p>現場查詢工令列表時，直接讀取已同步到 SQLite 的資料，省去等待 Ragic 回應的時間。</p>
+  <h3 id="report-title">生產報工 Web 系統 <time class="when" datetime="2026-02">2026.02</time></h3>
+  <p class="stack">React · TypeScript · Node.js · Express · SQLite · SSE</p>
+  <p>現場原先直接在 Ragic 表單報工，查工令或換頁時常要等資料載入。報工系統將工令查詢、產量回報與停機登記集中在同一個介面。工令列表直接讀取 SQLite，報工異動則寫回公司私有主機上的 Ragic。</p>
   <section aria-labelledby="sync-title">
     <h4 id="sync-title">背景同步時，現場仍能查工令</h4>
     <table class="sync-timeline" aria-labelledby="sync-title">
@@ -57,9 +57,12 @@
         <tr class="sync-reads"><th scope="row">現場查詢</th><td colspan="2">讀取上一個完整版本</td><td>讀取新版</td></tr>
       </tbody>
     </table>
+    <p>例如，同步期間現場修正了報工數量，後端會在切換前把異動補進新版，避免列表重新顯示舊數量。</p>
   </section>
+  <p><strong>寫入逾時</strong>　同一張工令的異動依序處理。若送出後逾時，Ragic 可能已寫入。系統將原任務標為待確認，供現場查核，避免自動重送造成重複報工。</p>
   <section aria-labelledby="formula-title">
     <h4 id="formula-title">跨表單公式轉換 <small>.nui 原始格式 · 示範資料</small></h4>
+    <p>同一欄位在不同表單上可能位於不同位置。轉換工具依欄位 ID 找出目標座標，再改寫公式。</p>
     <div class="nui-example">
       <p>一行欄位定義依序是「種類、欄、列、欄位 ID、名稱、屬性」</p>
       <dl class="nui-records">
@@ -84,7 +87,7 @@
 
 **企業知識問答（RAG）**　檢索時提高連續中文詞組的權重。測試選用字詞相近但作業規則不同的文件，逐題核對檢索結果是否包含回答所需的原文。
 
-### 物料需求規劃（MRP） <span class="when">2026.05 – 迄今</span>
+### 物料需求規劃（MRP） <time class="when" datetime="2026-05">2026.05</time>
 
 <p class="stack">Next.js · TypeScript · Prisma · PostgreSQL</p>
 
