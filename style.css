@@ -85,6 +85,22 @@ p + h3 { margin-top: 2rem; }
 }
 .stack { margin-top: .15rem; margin-bottom: .6rem; line-height: 1.6; }
 
+main table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: .5rem .75rem;
+  font-size: .875rem;
+  line-height: 1.55;
+}
+main th, main td {
+  padding: .32rem .6rem .32rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+main th { font-weight: 600; }
+main table code { font-size: .95em; overflow-wrap: anywhere; }
+
 a {
   color: inherit;
   text-decoration: underline;
