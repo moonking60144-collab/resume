@@ -11,21 +11,41 @@
 
 ## 工作專案
 
-### 生產報工 Web 系統 <span class="when">2026.02 – 迄今</span>
-
-<p class="stack">React · TypeScript · Express · SQLite · SSE</p>
-
-現場原本直接在 Ragic 報工，查詢工令時常得等畫面載入。我把常用查詢移到 SQLite，讓現場人員查列表時，不必每次都等 Ragic 回應。
-
-**同步不中斷**　同步期間，使用者可以繼續查上一版資料。新版本寫完並補上期間的異動後才切換，避免畫面讀到只更新一半的工令。
-
-**開發者工具 · 跨表單公式轉換**　同一個欄位在不同表單可能排在不同位置。我解析 Ragic 的表單設計檔（`.nui`），依欄位 ID 換算公式引用的座標，引號內的文字則照原樣保留。
-
-| 欄位對應 | 公式或處理結果 |
-| --- | --- |
-| 來源表單 | `IF(A6="A6","x","y")` |
-| 欄位從 `A6` 移到 `C3` | `IF(C3="A6","x","y")` |
-| 同一欄位對應到多格 | 列出候選座標，由開發者確認 |
+<article class="work-report" aria-labelledby="report-title">
+  <h3 id="report-title">生產報工 Web 系統 <span class="when">2026.02 – 迄今</span></h3>
+  <p class="stack">React · TypeScript · Express · SQLite · SSE</p>
+  <p>我把常用的工令查詢移到 SQLite，讓現場查列表時，不必每次都等 Ragic 回應。</p>
+  <section aria-labelledby="sync-title">
+    <h4 id="sync-title">背景同步時，現場仍能查工令</h4>
+    <table class="sync-timeline" aria-labelledby="sync-title">
+      <colgroup><col class="lane-label"><col><col><col></colgroup>
+      <tbody>
+        <tr class="sync-steps"><th scope="row">背景同步</th><td>建立新版</td><td>補齊期間異動</td><td>切換版本</td></tr>
+        <tr class="sync-reads"><th scope="row">現場查詢</th><td colspan="2">讀取上一個完整版本</td><td>讀取新版</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section aria-labelledby="formula-title">
+    <h4 id="formula-title">跨表單公式轉換 <small>.nui 原始格式 · 示範資料</small></h4>
+    <div class="nui-example">
+      <p>一行欄位定義依序是「種類、欄、列、欄位 ID、名稱、屬性」</p>
+      <dl class="nui-records">
+        <dt>來源表</dt><dd><code>D,1,6,<b>1001</b>,規格,text=1</code><span>第 1 欄、第 6 列 → <strong>A6</strong></span></dd>
+        <dt>目標表</dt><dd><code>D,3,3,<b>1001</b>,規格,text=1</code><span>第 3 欄、第 3 列 → <strong>C3</strong></span></dd>
+      </dl>
+    </div>
+    <p>兩張表的「規格」都有欄位 ID <b class="field-id">1001</b>，所以公式在目標表要改用 C3。</p>
+    <div class="formula-comparison">
+      <div><span>原公式</span><code>IF(<mark>A6</mark>="A6","x","y")</code></div>
+      <span class="formula-arrow" aria-hidden="true">→</span>
+      <div><span>轉換後</span><code>IF(<mark>C3</mark>="A6","x","y")</code></div>
+    </div>
+    <p class="formula-note">引號裡的 "A6" 是文字，保留原樣。</p>
+    <details><summary>如果目標表出現兩個候選座標</summary>
+      <p>例如欄位 ID 1001 同時出現在 C3 和 E3，光靠 ID 就無法判斷公式該指向哪一格。工具會列出這兩個座標，交由開發者確認，再決定如何改寫。</p>
+    </details>
+  </section>
+</article>
 
 **會議錄音**　因應會議紀錄需求，我讓長錄音優先在停頓處切段辨識。若切點附近持續有人說話，就在音量最低處切開，並在逐字稿標記該處供回聽。
 

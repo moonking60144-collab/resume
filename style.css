@@ -84,21 +84,75 @@ p + h3 { margin-top: 2rem; }
 }
 .stack { margin-top: .15rem; margin-bottom: .6rem; line-height: 1.6; }
 
-main table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-block: .5rem .75rem;
-  font-size: .875rem;
-  line-height: 1.55;
+.work-report {
+  --ink: #f3efe7;
+  --muted: #c8c2b6;
+  --line: #575349;
+  --surface: #26231f;
+  --inset: #39362f;
+  --new-bg: #314b43;
+  --new-ink: #a7ddca;
+  margin-block: .75rem 1rem;
+  padding: clamp(.9rem, 2.2vw, 1.55rem);
+  min-width: 0;
+  background: var(--surface);
+  color: var(--ink);
 }
-main th, main td {
-  padding: .32rem .6rem .32rem 0;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  vertical-align: top;
+.work-report h3 { font-size: 1.3rem; }
+.work-report p { font-size: .92rem; line-height: 1.6; }
+.work-report .stack { margin: .15rem 0 .85rem; font-size: .78rem; }
+.work-report section { margin-top: 1rem; padding-top: .85rem; border-top: 1px solid var(--line); }
+.work-report h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .15rem .75rem;
+  margin: 0 0 .65rem;
+  font-size: 1rem;
 }
-main th { font-weight: 600; }
-main table code { font-size: .95em; overflow-wrap: anywhere; }
+.work-report h4 small, .work-report .formula-note, .work-report details,
+.nui-example p, .nui-records dt, .nui-records dd span, .formula-comparison div > span {
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.sync-timeline { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: .84rem; }
+.sync-timeline th { text-align: left; font-size: .78rem; }
+.lane-label { width: 4.3rem; }
+.sync-steps td { position: relative; padding: .9rem .2rem .65rem; vertical-align: top; }
+.sync-steps td:not(:last-child)::before {
+  content: ""; position: absolute; top: .25rem; left: .25rem; width: 100%; border-top: 1px solid var(--muted);
+}
+.sync-steps td::after {
+  content: ""; position: absolute; top: 0; left: .1rem; width: .46rem; height: .46rem;
+  border-radius: 50%; border: 1px solid var(--muted); background: var(--surface);
+}
+.sync-steps td:last-child::after { border-color: var(--new-ink); background: var(--new-ink); }
+.sync-reads td { padding: .35rem .55rem; line-height: 1.4; background: var(--inset); }
+.sync-reads td:last-child { border-left: 3px solid var(--surface); background: var(--new-bg); color: var(--new-ink); font-weight: 650; }
+.nui-example { background: var(--inset); padding: .55rem .75rem; margin-bottom: .6rem; }
+.nui-records { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .6rem; margin: .45rem 0 0; }
+.nui-records dd { display: grid; grid-template-columns: minmax(max-content, 1fr) 1fr; gap: .12rem .85rem; margin: 0; }
+.nui-records b, .field-id { text-decoration: underline dotted; text-underline-offset: .2em; }
+.work-report code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .875rem; }
+.formula-comparison { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: .6rem; margin: .75rem 0 .5rem; }
+.formula-comparison div > span, .formula-comparison code { display: block; }
+.formula-comparison code { margin-top: .18rem; }
+.formula-arrow { color: var(--muted); }
+.formula-comparison mark { color: var(--new-ink); background: var(--new-bg); font-weight: 700; }
+.work-report details { margin-top: .45rem; }
+.work-report summary { width: fit-content; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.work-report summary:focus-visible { outline: 2px solid var(--new-ink); outline-offset: 3px; }
+.work-report details p { margin-top: .4rem; font-size: .85rem; }
+@media screen and (max-width: 36rem) {
+  .lane-label { width: 3.7rem; }
+  .nui-records dd { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 28rem) {
+  .formula-comparison { grid-template-columns: 1fr; gap: .3rem; }
+  .formula-arrow { display: none; }
+}
 
 a {
   color: inherit;
@@ -132,6 +186,7 @@ footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(-
   main > h2 { grid-column: 1; }
   h2, h2 + * { align-self: baseline; }
   h2 + h3, h2 + p { margin-top: 2.5rem; }
+  h2 + .work-report { margin-top: 2.5rem; }
 }
 
 /* 寬螢幕：桌面帶紙紋，內容放在一張乾淨的紙上；手機維持滿版紙色、不加紙紋 */
@@ -160,4 +215,14 @@ footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(-
   h2, h3, .stack { break-after: avoid; }
   p { orphans: 2; widows: 2; }
   footer { padding: 0; margin-top: 1.5rem; }
+  .work-report {
+    --surface: white; --ink: #221f1b; --muted: #514d45; --line: #b6b0a6;
+    --inset: #f4f2ee; --new-bg: #e3eee8; --new-ink: #245742;
+    padding: 0; margin-bottom: .65rem;
+  }
+  h2 + .work-report { margin-top: 1.4rem; }
+  .work-report section { break-inside: avoid; }
+  .work-report details::details-content { content-visibility: visible; }
+  .work-report summary { list-style: none; text-decoration: none; font-weight: 600; }
+  .work-report summary:focus-visible { outline: none; }
 }
