@@ -38,6 +38,9 @@ h1 + p {
 }
 h1 + p + p { margin-top: .9rem; max-width: 36rem; }
 .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1.25rem;
   margin-top: .9rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--line);
@@ -83,6 +86,17 @@ p + h3 { margin-top: 2rem; }
   font-variant-numeric: tabular-nums;
 }
 .stack { margin-top: .15rem; margin-bottom: .6rem; line-height: 1.6; }
+
+.experience {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem clamp(.65rem, 2vw, 1.25rem);
+  margin: .75rem 0 0;
+}
+.experience dd { margin: 0; break-inside: avoid; }
+.experience dd > span { display: block; margin-top: .1rem; font-size: .94rem; }
+.experience dd p { margin-top: .2rem; font-size: .88rem; color: var(--muted); }
 
 .work-report {
   margin-block: .75rem 1rem;
@@ -175,7 +189,7 @@ footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(-
   main > h2 { grid-column: 1; }
   h2, h2 + * { align-self: baseline; }
   h2 + h3, h2 + p { margin-top: 2.5rem; }
-  h2 + .work-report { margin-top: 2.5rem; }
+  h2 + .work-report, h2 + .experience { margin-top: 2.5rem; }
 }
 
 /* 寬螢幕：桌面帶紙紋，內容放在一張乾淨的紙上；手機維持滿版紙色、不加紙紋 */
@@ -205,7 +219,7 @@ footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(-
   p { orphans: 2; widows: 2; }
   footer { padding: 0; margin-top: 1.5rem; }
   .work-report { --paper: #fff; margin-bottom: .65rem; }
-  h2 + .work-report { margin-top: 1.4rem; }
+  h2 + .work-report, h2 + .experience { margin-top: 1.4rem; }
   .work-report section { break-inside: avoid; }
   .work-report details::details-content { content-visibility: visible; }
   .work-report summary { list-style: none; text-decoration: none; font-weight: 600; }

@@ -5,9 +5,27 @@
 產線設備測試開始寫程式，用 Python 把讀碼器測試自動化。2025 年 9 月起擔任軟體工程師，先將扣料、完工入庫等作業寫成 Ragic 自動化流程，後來獨立負責生產報工與物料需求規劃（MRP）兩套 內部Web 系統，從設計、開發到部署與維護。
 
 <p class="links">
-  <a href="https://github.com/moonking60144-collab">GitHub · moonking60144-collab</a> ·
+  <a href="https://github.com/moonking60144-collab">GitHub · moonking60144-collab</a>
+  <a href="https://leetcode.com/u/lqnIBxO4ep/">LeetCode</a>
   <a href="mailto:moonking60144@gmail.com">moonking60144@gmail.com</a>
 </p>
+
+<h2 id="experience">工作經驗</h2>
+
+<dl class="experience">
+  <dt class="when"><time datetime="2025-09">2025.09</time> – 迄今</dt>
+  <dd>
+    <strong>資訊軟體工程師</strong>
+    <span>宏得螺絲工業股份有限公司</span>
+    <p>開發 Ragic 表單與跨表流程，將料號版本管理、核價等作業自動化。</p>
+  </dd>
+  <dt class="when"><time datetime="2025-06">2025.06</time> – <time datetime="2025-08">2025.08</time></dt>
+  <dd>
+    <strong>助理工程師</strong>
+    <span>弘馳科技有限公司</span>
+    <p>用 Python 撰寫產線讀碼器的自動化測試，並建置及維護公司英文官網。</p>
+  </dd>
+</dl>
 
 ## 工作專案
 
