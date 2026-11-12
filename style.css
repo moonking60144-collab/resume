@@ -85,23 +85,11 @@ p + h3 { margin-top: 2rem; }
 .stack { margin-top: .15rem; margin-bottom: .6rem; line-height: 1.6; }
 
 .work-report {
-  --ink: #f3efe7;
-  --muted: #c8c2b6;
-  --line: #575349;
-  --surface: #26231f;
-  --inset: #39362f;
-  --new-bg: #314b43;
-  --new-ink: #a7ddca;
   margin-block: .75rem 1rem;
-  padding: clamp(.9rem, 2.2vw, 1.55rem);
   min-width: 0;
-  background: var(--surface);
-  color: var(--ink);
 }
-.work-report h3 { font-size: 1.3rem; }
-.work-report p { font-size: .92rem; line-height: 1.6; }
-.work-report .stack { margin: .15rem 0 .85rem; font-size: .78rem; }
-.work-report section { margin-top: 1rem; padding-top: .85rem; border-top: 1px solid var(--line); }
+.work-report section { margin-top: 1.15rem; }
+.work-report section + section { padding-top: 1rem; border-top: 1px solid var(--line); }
 .work-report h4 {
   display: flex;
   flex-wrap: wrap;
@@ -110,6 +98,7 @@ p + h3 { margin-top: 2rem; }
   gap: .15rem .75rem;
   margin: 0 0 .65rem;
   font-size: 1rem;
+  color: var(--ink);
 }
 .work-report h4 small, .work-report .formula-note, .work-report details,
 .nui-example p, .nui-records dt, .nui-records dd span, .formula-comparison div > span {
@@ -126,12 +115,12 @@ p + h3 { margin-top: 2rem; }
 }
 .sync-steps td::after {
   content: ""; position: absolute; top: 0; left: .1rem; width: .46rem; height: .46rem;
-  border-radius: 50%; border: 1px solid var(--muted); background: var(--surface);
+  border-radius: 50%; border: 1px solid var(--muted); background: var(--paper);
 }
-.sync-steps td:last-child::after { border-color: var(--new-ink); background: var(--new-ink); }
-.sync-reads td { padding: .35rem .55rem; line-height: 1.4; background: var(--inset); }
-.sync-reads td:last-child { border-left: 3px solid var(--surface); background: var(--new-bg); color: var(--new-ink); font-weight: 650; }
-.nui-example { background: var(--inset); padding: .55rem .75rem; margin-bottom: .6rem; }
+.sync-steps td:last-child::after { border-color: var(--ink); background: var(--ink); }
+.sync-reads td { padding: .35rem .55rem; line-height: 1.4; background: var(--desk); }
+.sync-reads td:last-child { border-left: 3px solid var(--paper); background: var(--line); color: var(--ink); font-weight: 650; }
+.nui-example { background: var(--desk); padding: .55rem .75rem; margin-bottom: .6rem; }
 .nui-records { display: grid; grid-template-columns: max-content 1fr; gap: .25rem .6rem; margin: .45rem 0 0; }
 .nui-records dd { display: grid; grid-template-columns: minmax(max-content, 1fr) 1fr; gap: .12rem .85rem; margin: 0; }
 .nui-records b, .field-id { text-decoration: underline dotted; text-underline-offset: .2em; }
@@ -140,10 +129,10 @@ p + h3 { margin-top: 2rem; }
 .formula-comparison div > span, .formula-comparison code { display: block; }
 .formula-comparison code { margin-top: .18rem; }
 .formula-arrow { color: var(--muted); }
-.formula-comparison mark { color: var(--new-ink); background: var(--new-bg); font-weight: 700; }
+.formula-comparison mark { color: var(--ink); background: var(--line); font-weight: 700; }
 .work-report details { margin-top: .45rem; }
-.work-report summary { width: fit-content; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
-.work-report summary:focus-visible { outline: 2px solid var(--new-ink); outline-offset: 3px; }
+.work-report summary { width: fit-content; cursor: pointer; text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: .2em; }
+.work-report summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .work-report details p { margin-top: .4rem; font-size: .85rem; }
 @media screen and (max-width: 36rem) {
   .lane-label { width: 3.7rem; }
@@ -215,11 +204,7 @@ footer p { font-size: inherit; padding-top: 1.25rem; border-top: 1px solid var(-
   h2, h3, .stack { break-after: avoid; }
   p { orphans: 2; widows: 2; }
   footer { padding: 0; margin-top: 1.5rem; }
-  .work-report {
-    --surface: white; --ink: #221f1b; --muted: #514d45; --line: #b6b0a6;
-    --inset: #f4f2ee; --new-bg: #e3eee8; --new-ink: #245742;
-    padding: 0; margin-bottom: .65rem;
-  }
+  .work-report { --paper: #fff; margin-bottom: .65rem; }
   h2 + .work-report { margin-top: 1.4rem; }
   .work-report section { break-inside: avoid; }
   .work-report details::details-content { content-visibility: visible; }
